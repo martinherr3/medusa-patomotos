@@ -51,7 +51,7 @@
     <EmbeddedResource Include="Mapping\UsuarioRol.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Base.Data\Base.Core.csproj">
+    <ProjectReference Include="..\Base.Core\Base.Core.csproj">
       <Project>{3C5F3E92-E15A-42ED-B97F-C6CD9247AF5B}</Project>
       <Name>Base.Core</Name>
     </ProjectReference>

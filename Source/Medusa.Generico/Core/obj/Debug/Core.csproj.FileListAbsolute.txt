@@ -24,3 +24,16 @@ D:\Medusa\PatoMotos\Source\Medusa.Generico\Core\bin\Debug\Medusa.Base.Utils.pdb
 D:\Medusa\PatoMotos\Source\Medusa.Generico\Core\obj\Debug\ResolveAssemblyReference.cache
 D:\Medusa\PatoMotos\Source\Medusa.Generico\Core\obj\Debug\Medusa.Gestion.Core.dll
 D:\Medusa\PatoMotos\Source\Medusa.Generico\Core\obj\Debug\Medusa.Gestion.Core.pdb
+D:\Medusa\PatoMotos\medusa-patomotos\Source\Medusa.Generico\Core\bin\Debug\Medusa.Gestion.Core.dll
+D:\Medusa\PatoMotos\medusa-patomotos\Source\Medusa.Generico\Core\bin\Debug\Medusa.Gestion.Core.pdb
+D:\Medusa\PatoMotos\medusa-patomotos\Source\Medusa.Generico\Core\bin\Debug\Medusa.Base.Core.dll
+D:\Medusa\PatoMotos\medusa-patomotos\Source\Medusa.Generico\Core\bin\Debug\NHibernate.dll
+D:\Medusa\PatoMotos\medusa-patomotos\Source\Medusa.Generico\Core\bin\Debug\Iesi.Collections.dll
+D:\Medusa\PatoMotos\medusa-patomotos\Source\Medusa.Generico\Core\bin\Debug\log4net.dll
+D:\Medusa\PatoMotos\medusa-patomotos\Source\Medusa.Generico\Core\bin\Debug\Castle.DynamicProxy.dll
+D:\Medusa\PatoMotos\medusa-patomotos\Source\Medusa.Generico\Core\bin\Debug\Medusa.Base.Utils.dll
+D:\Medusa\PatoMotos\medusa-patomotos\Source\Medusa.Generico\Core\bin\Debug\Medusa.Base.Core.pdb
+D:\Medusa\PatoMotos\medusa-patomotos\Source\Medusa.Generico\Core\bin\Debug\Medusa.Base.Utils.pdb
+D:\Medusa\PatoMotos\medusa-patomotos\Source\Medusa.Generico\Core\obj\Debug\ResolveAssemblyReference.cache
+D:\Medusa\PatoMotos\medusa-patomotos\Source\Medusa.Generico\Core\obj\Debug\Medusa.Gestion.Core.dll
+D:\Medusa\PatoMotos\medusa-patomotos\Source\Medusa.Generico\Core\obj\Debug\Medusa.Gestion.Core.pdb
