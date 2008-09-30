@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="Medusa.Generico.Domain" namespace="Medusa.Generico.Domain">
+    <class name="Rol" table="Rol" >
+    <id name="ID" type="System.Int64" column="idRol">
+        <generator class="identity"/>
+    </id>
+    <property name="Nombre" column="nombre" type="System.String" not-null="false" length="50"/>
+    <property name="Descripcion" column="descripcion" type="System.String" not-null="false" />
+    <bag name="Usuarios" table="UsuarioRol">
+        <key column="idRol" />
+        <many-to-many class="Usuario" column="idUsuario" />
+    </bag>
+ </class>
+</hibernate-mapping>
