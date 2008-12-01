@@ -19,7 +19,7 @@ public abstract class DomainObject<IdT>
     /// </summary>
     public virtual IdT ID {
         get { return id; }
-        protected set { id = value; }
+        set { id = value; }
     }
 
     public override sealed bool Equals(object obj) {
