@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Medusa.Generico.Core</RootNamespace>
-    <AssemblyName>Medusa.Gestion.Core</AssemblyName>
+    <AssemblyName>Medusa.Generico.Core</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -64,4 +64,8 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(TargetDir)*.dll" "C:\Inetpub\wwwroot\Medusa\ModuloGenerico\bin\*.*" &gt;&gt; null
+copy "$(TargetDir)*.pdb" "C:\Inetpub\wwwroot\Medusa\ModuloGenerico\bin\*.*" &gt;&gt; null</PostBuildEvent>
+  </PropertyGroup>
 </Project>
