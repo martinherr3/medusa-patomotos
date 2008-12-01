@@ -60,4 +60,8 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(TargetDir)*.dll" "C:\Inetpub\wwwroot\Medusa\ModuloGenerico\bin\*.*" &gt;&gt; null
+copy "$(TargetDir)*.pdb" "C:\Inetpub\wwwroot\Medusa\ModuloGenerico\bin\*.*" &gt;&gt; null</PostBuildEvent>
+  </PropertyGroup>
 </Project>
