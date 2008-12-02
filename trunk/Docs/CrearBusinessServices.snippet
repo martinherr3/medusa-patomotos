@@ -95,7 +95,13 @@ namespace Medusa.Generico.Service
             ResponseService<Int32> wRes = new ResponseService<Int32>();
             try
             {
-                wRes.ServiceData = $Entidad$BC.Save(pServiceRequest);
+                $Entidad$Business _$Entidad$Business;
+                _$Entidad$Business = new $Entidad$Business(DaoFactory.Get$Entidad$Dao());
+                $Entidad$ my$Entidad$;
+                my$Entidad$ = Transformer$Entidad$.DTOToEntity(pServiceRequest);
+                _$Entidad$Business.Delete(my$Entidad$);
+                wRes.ServiceData = 1;
+                //wRes.ServiceData = $Entidad$BC.Save(pServiceRequest);
             }
             catch (Exception ex)
             {
@@ -131,7 +137,13 @@ namespace Medusa.Generico.Service
             ResponseService<List<$Entidad$>> wRes = new ResponseService<List<$Entidad$>>();
             try
             {
-                wRes.ServiceData = $Entidad$BC.GetByEntity(pServiceRequest);
+                $Entidad$Business _$Entidad$Business;
+                _$Entidad$Business = new $Entidad$Business(DaoFactory.Get$Entidad$Dao());
+                $Entidad$ my$Entidad$;
+                my$Entidad$ = Transformer$Entidad$.DTOToEntity(pServiceRequest);
+                _$Entidad$Business.Delete(my$Entidad$);
+                wRes.ServiceData = 1;
+                //wRes.ServiceData = $Entidad$BC.GetByEntity(pServiceRequest);
             }
             catch (Exception ex)
             {
@@ -167,7 +179,13 @@ namespace Medusa.Generico.Service
             ResponseService<List<$Entidad$>> wRes = new ResponseService<List<$Entidad$>>();
             try
             {
-                wRes.ServiceData = $Entidad$BC.GetById(pServiceRequest);
+                $Entidad$Business _$Entidad$Business;
+                _$Entidad$Business = new $Entidad$Business(DaoFactory.Get$Entidad$Dao());
+                $Entidad$ my$Entidad$;
+                my$Entidad$ = Transformer$Entidad$.DTOToEntity(pServiceRequest);
+                _$Entidad$Business.Delete(my$Entidad$);
+                wRes.ServiceData = 1;
+                //wRes.ServiceData = $Entidad$BC.GetById(pServiceRequest);
             }
             catch (Exception ex)
             {
@@ -203,7 +221,13 @@ namespace Medusa.Generico.Service
             ResponseService<List<$Entidad$>> wRes = new ResponseService<List<$Entidad$>>();
             try
             {
-                wRes.ServiceData = $Entidad$BC.GetAll();
+                $Entidad$Business _$Entidad$Business;
+                _$Entidad$Business = new $Entidad$Business(DaoFactory.Get$Entidad$Dao());
+                $Entidad$ my$Entidad$;
+                my$Entidad$ = Transformer$Entidad$.DTOToEntity(pServiceRequest);
+                _$Entidad$Business.Delete(my$Entidad$);
+                wRes.ServiceData = 1;
+                //wRes.ServiceData = $Entidad$BC.GetAll();
             }
             catch (Exception ex)
             {
@@ -240,7 +264,13 @@ namespace Medusa.Generico.Service
             ResponseService<Int32> wRes = new ResponseService<Int32>();
             try
             {
-                wRes.ServiceData = $Entidad$BC.Update(pServiceRequest);
+                $Entidad$Business _$Entidad$Business;
+                _$Entidad$Business = new $Entidad$Business(DaoFactory.Get$Entidad$Dao());
+                $Entidad$ my$Entidad$;
+                my$Entidad$ = Transformer$Entidad$.DTOToEntity(pServiceRequest);
+                _$Entidad$Business.Delete(my$Entidad$);
+                wRes.ServiceData = 1;
+                //wRes.ServiceData = $Entidad$BC.Update(pServiceRequest);
             }
             catch (Exception ex)
             {
