@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>Q:\Patos\ModuloGenerico\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -31,31 +31,37 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Castle.Windsor, Version=1.0.0.2, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL" />
-    <Reference Include="Medusa.Architecture.CommonEntities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Castle.Windsor, Version=1.0.0.2, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Q:\Patos\ModuloGenerico\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="Medusa.Architecture.CommonEntities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Q:\Patos\ModuloGenerico\Medusa.Architecture.CommonEntities.dll</HintPath>
+    </Reference>
     <Reference Include="Medusa.Base.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Base.Core\bin\Debug\Medusa.Base.Core.dll</HintPath>
+      <HintPath>Q:\Patos\ModuloGenerico\Medusa.Base.Core.dll</HintPath>
     </Reference>
     <Reference Include="Medusa.Base.Utils, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Base.Utils\bin\Debug\Medusa.Base.Utils.dll</HintPath>
+      <HintPath>Q:\Patos\ModuloGenerico\Medusa.Base.Utils.dll</HintPath>
     </Reference>
     <Reference Include="Medusa.Generico.Assembler, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Assembler\bin\Debug\Medusa.Generico.Assembler.dll</HintPath>
+      <HintPath>Q:\Patos\ModuloGenerico\Medusa.Generico.Assembler.dll</HintPath>
     </Reference>
     <Reference Include="Medusa.Generico.Business, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Business\bin\Debug\Medusa.Generico.Business.dll</HintPath>
+      <HintPath>Q:\Patos\ModuloGenerico\Medusa.Generico.Business.dll</HintPath>
     </Reference>
     <Reference Include="Medusa.Generico.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Core\bin\Debug\Medusa.Generico.Core.dll</HintPath>
+      <HintPath>Q:\Patos\ModuloGenerico\Medusa.Generico.Core.dll</HintPath>
     </Reference>
     <Reference Include="Medusa.Generico.DTO, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\DTO\bin\Debug\Medusa.Generico.DTO.dll</HintPath>
+      <HintPath>Q:\Patos\ModuloGenerico\Medusa.Generico.DTO.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
