@@ -15,48 +15,43 @@ namespace Medusa.Generico.Service
     /// <summary>
     /// Servicio para Borrar Usuario
     /// </summary>
+    class UsuarioDeleteService : IBusinessService<UsuarioDTO, ResponseService<Int32>>
+    {
+        /// <summary>
+        /// Exposes accessor for the <see cref="IDaoFactory" /> used by all pages.
+        /// </summary>
+        public IDaoFactory DaoFactory
+        {
+            get
+            {
+                return (IDaoFactory)ContainerHelper.WindsorContainer()[typeof(IDaoFactory)];
+            }
+        }
+
+        #region IBusinessService<UsuarioDTO,ResponseService<Int32>> Members
+
+        public ResponseService<Int32> Execute(UsuarioDTO pServiceRequest)
+        {
+            ResponseService<Int32> wRes = new ResponseService<Int32>();
+            try
+            {
+                UsuarioBusiness _UsuarioBusiness;
+                _UsuarioBusiness = new UsuarioBusiness(DaoFactory.GetUsuarioDao());
+                Usuario myUsuario;
+                myUsuario = AssemblerUsuario.DTOToEntity(pServiceRequest);
+                _UsuarioBusiness.Delete(myUsuario);
+                wRes.ServiceData = 1;
+            }
+            catch (Exception ex)
+            {
+                wRes.ServiceError = new ServiceError(ex.Message, ex.Source, ex.StackTrace);
+            }
+            return wRes;
+        }
 
 
-    //class UsuarioDeleteService : IBusinessService<Usuario, ResponseService<Int32>>
-    //{
-    //    /// <summary>
-    //    /// Exposes accessor for the <see cref="IDaoFactory" /> used by all pages.
-    //    /// </summary>
-    //    public IDaoFactory DaoFactory
-    //    {
-    //        get
-    //        {
-    //            return (IDaoFactory)ContainerHelper.WindsorContainer()[typeof(IDaoFactory)];
-    //        }
-    //    }
-
-    //    #region IBusinessService<Usuario,ResponseService<Int32>> Members
-
-    //    public ResponseService<Int32> Execute(Usuario pServiceRequest)
-    //    {
-    //        ResponseService<Int32> wRes = new ResponseService<Int32>();
-    //        try
-    //        {
-    //            UsuarioBusiness _UsuarioBusiness;
-    //            _UsuarioBusiness = new UsuarioBusiness(DaoFactory.GetUsuarioDao());
-    //            Usuario myUsuario;
-    //            myUsuario = TransformerUsuario.DTOToEntity(pServiceRequest);
-    //            _UsuarioBusiness.Delete(myUsuario);
-    //            wRes.ServiceData = 1;
-
-
-    //            //wRes.ServiceData = UsuarioBC.Delete(pServiceRequest);
-    //        }
-    //        catch (Exception ex)
-    //        {
-    //            wRes.ServiceError = new ServiceError(ex.Message, ex.Source, ex.StackTrace);
-    //        }
-    //        return wRes;
-    //    }
-
-
-    //    #endregion
-    //}
+        #endregion
+    }
 
 
     /// <summary>
@@ -86,9 +81,8 @@ namespace Medusa.Generico.Service
                 _UsuarioBusiness = new UsuarioBusiness(DaoFactory.GetUsuarioDao());
                 Usuario myUsuario;
                 myUsuario = AssemblerUsuario.DTOToEntity(pServiceRequest);
-                _UsuarioBusiness.Delete(myUsuario);
+                _UsuarioBusiness.Insert(myUsuario);
                 wRes.ServiceData = 1;
-                //wRes.ServiceData = UsuarioBC.Save(pServiceRequest);
             }
             catch (Exception ex)
             {
@@ -105,7 +99,7 @@ namespace Medusa.Generico.Service
     ///// <summary>
     ///// Servicio para consultar Usuario por atributos de la misma
     ///// </summary>
-    //class UsuarioGetByEntityService : IBusinessService<Usuario, ResponseService<List<Usuario>>>
+    //class UsuarioGetByEntityService : IBusinessService<UsuarioDTO, ResponseService<List<Usuario>>>
     //{
     //    /// <summary>
     //    /// Exposes accessor for the <see cref="IDaoFactory" /> used by all pages.
@@ -118,19 +112,18 @@ namespace Medusa.Generico.Service
     //        }
     //    }
 
-    //    #region IBusinessService<Usuario,ResponseService<List<Usuario>>> Members
-    //    public ResponseService<List<Usuario>> Execute(Usuario pServiceRequest)
+    //    #region IBusinessService<UsuarioDTO,ResponseService<List<Usuario>>> Members
+    //    public ResponseService<List<UsuarioDTO>> Execute(UsuarioDTO pServiceRequest)
     //    {
-    //        ResponseService<List<Usuario>> wRes = new ResponseService<List<Usuario>>();
+    //        ResponseService<List<UsuarioDTO>> wRes = new ResponseService<List<UsuarioDTO>>();
     //        try
     //        {
     //            UsuarioBusiness _UsuarioBusiness;
     //            _UsuarioBusiness = new UsuarioBusiness(DaoFactory.GetUsuarioDao());
     //            Usuario myUsuario;
-    //            myUsuario = TransformerUsuario.DTOToEntity(pServiceRequest);
-    //            _UsuarioBusiness.Delete(myUsuario);
+    //            myUsuario = AssemblerUsuario.DTOToEntity(pServiceRequest);
+    //            _UsuarioBusiness.GetAll();
     //            wRes.ServiceData = 1;
-    //            //wRes.ServiceData = UsuarioBC.GetByEntity(pServiceRequest);
     //        }
     //        catch (Exception ex)
     //        {
@@ -144,46 +137,45 @@ namespace Medusa.Generico.Service
     //}
 
 
-    ///// <summary>
-    ///// Servicio para consultar Usuario por su ID
-    ///// </summary>
-    //class UsuarioGetByIdService : IBusinessService<Int32, ResponseService<List<Usuario>>>
-    //{
-    //    /// <summary>
-    //    /// Exposes accessor for the <see cref="IDaoFactory" /> used by all pages.
-    //    /// </summary>
-    //    public IDaoFactory DaoFactory
-    //    {
-    //        get
-    //        {
-    //            return (IDaoFactory)ContainerHelper.WindsorContainer()[typeof(IDaoFactory)];
-    //        }
-    //    }
+    /// <summary>
+    /// Servicio para consultar Usuario por su ID
+    /// </summary>
+    class UsuarioGetByIdService : IBusinessService<Int32, ResponseService<List<UsuarioDTO>>>
+    {
+        /// <summary>
+        /// Exposes accessor for the <see cref="IDaoFactory" /> used by all pages.
+        /// </summary>
+        public IDaoFactory DaoFactory
+        {
+            get
+            {
+                return (IDaoFactory)ContainerHelper.WindsorContainer()[typeof(IDaoFactory)];
+            }
+        }
 
-    //    #region IBusinessService<Int32,ResponseService<List<Usuario>>> Members
-    //    public ResponseService<List<Usuario>> Execute(Int32 pServiceRequest)
-    //    {
-    //        ResponseService<List<Usuario>> wRes = new ResponseService<List<Usuario>>();
-    //        try
-    //        {
-    //            UsuarioBusiness _UsuarioBusiness;
-    //            _UsuarioBusiness = new UsuarioBusiness(DaoFactory.GetUsuarioDao());
-    //            Usuario myUsuario;
-    //            myUsuario = TransformerUsuario.DTOToEntity(pServiceRequest);
-    //            _UsuarioBusiness.Delete(myUsuario);
-    //            wRes.ServiceData = 1;
-    //            //wRes.ServiceData = UsuarioBC.GetById(pServiceRequest);
-    //        }
-    //        catch (Exception ex)
-    //        {
-    //            wRes.ServiceError = new ServiceError(ex.Message, ex.Source, ex.StackTrace);
-    //        }
-    //        return wRes;
+        #region IBusinessService<Int32,ResponseService<List<UsuarioDTO>>> Members
+        public ResponseService<List<UsuarioDTO>> Execute(Int32 pServiceRequest)
+        {
+            ResponseService<List<UsuarioDTO>> wRes = new ResponseService<List<UsuarioDTO>>();
+            try
+            {
+                UsuarioBusiness _UsuarioBusiness;
+                _UsuarioBusiness = new UsuarioBusiness(DaoFactory.GetUsuarioDao());
+                Usuario myUsuario;
+                myUsuario = AssemblerUsuario.DTOToEntity(pServiceRequest);
+                _UsuarioBusiness.GetById(myUsuario.ID);
+                wRes.ServiceData = 1;
+            }
+            catch (Exception ex)
+            {
+                wRes.ServiceError = new ServiceError(ex.Message, ex.Source, ex.StackTrace);
+            }
+            return wRes;
 
 
-    //    }
-    //    #endregion
-    //}
+        }
+        #endregion
+    }
 
 
     ///// <summary>

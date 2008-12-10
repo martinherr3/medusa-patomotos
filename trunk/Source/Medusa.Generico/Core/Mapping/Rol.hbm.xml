@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="Medusa.Generico.Domain" namespace="Medusa.Generico.Domain">
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="Medusa.Generico.Core" namespace="Medusa.Generico.Domain">
     <class name="Rol" table="Rol" >
     <id name="ID" type="System.Int64" column="idRol">
         <generator class="identity"/>

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Medusa.Base.Domain;
+using Medusa.Architecture.ServiceInterfaceWrappers;
+using Medusa.Architecture.CommonEntities;
 
 namespace Medusa.Generico.DTO
 {
@@ -84,5 +86,74 @@ namespace Medusa.Generico.DTO
             return ID.GetHashCode();
         }
 
+        /// <summary>
+        /// Inserta Usuario.
+        /// </summary>
+        /// <returns></returns>
+        public Int32 Insertar()
+        {
+            ResponseService<Int32> wResul = new Wrapper().ExecuteService<UsuarioDTO, ResponseService<Int32>>("BDUsuarioInsertService", this);
+            if (wResul.ServiceError.HasError)
+            { 
+                throw new Exception(wResul.ServiceError.Mensaje);
+            }
+            else
+            {
+                return wResul.ServiceData;
+            }
+
+        }
+
+        /// <summary>
+        /// Elimina Usuario.
+        /// </summary>
+        /// <returns></returns>
+        public Int32 Eliminar()
+        {
+            ResponseService<Int32> wResul = new Wrapper().ExecuteService<UsuarioDTO, ResponseService<Int32>>("BDUsuarioDeleteService", this);
+            if (wResul.ServiceError.HasError)
+            {
+                throw new Exception(wResul.ServiceError.Mensaje);
+            }
+            else
+            {
+                return wResul.ServiceData;
+            }
+        }
+
+        /// <summary>
+        /// Modifica Usuario.
+        /// </summary>
+        /// <returns></returns>
+        public Int32 Modificar()
+        {
+            ResponseService<Int32> wResul = new Wrapper().ExecuteService<UsuarioDTO, ResponseService<Int32>>("BDUsuarioUpdateService", this);
+            if (wResul.ServiceError.HasError)
+            {
+                throw new Exception(wResul.ServiceError.Mensaje);
+            }
+            else
+            {
+                return wResul.ServiceData;
+            }
+        }
+
+        /// <summary>
+        /// Llena una lista de Usuarios.
+        /// </summary>
+        /// <param name="pEntidad">Criterio de filtro.</param>
+        public List<UsuarioDTO> Llenar()
+        {
+
+            ResponseService<List<UsuarioDTO>> wResul = new Wrapper().ExecuteService<UsuarioDTO, ResponseService<List<UsuarioDTO>>>("BDUsuarioSearchService", this);
+            if (wResul.ServiceError.HasError)
+            {
+                throw new Exception(wResul.ServiceError.Mensaje);
+            }
+            else
+            {
+                return wResul.ServiceData;
+            }
+        }
     }
 }

@@ -14,7 +14,7 @@ namespace Medusa.Generico.DTO
 
         private System.String _Nombre;
         private System.String _Descripcion;
-        private IList<UsuarioRolDTO> _Usuarios = new List<UsuarioRolDTO>();
+        private List<UsuarioRolDTO> _Usuarios = new List<UsuarioRolDTO>();
 
         public RolDTO()
         {
@@ -37,7 +37,7 @@ namespace Medusa.Generico.DTO
             set { _Descripcion = value; }
         }
 
-        public virtual IList<UsuarioRolDTO> Usuarios
+        public virtual List<UsuarioRolDTO> Usuarios
         {
             get { return _Usuarios; }
             set { _Usuarios = value; }
