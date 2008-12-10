@@ -46,7 +46,7 @@ namespace Medusa.Generico.Assembler
         public static UsuarioDTO EntityToDTO(Usuario pUsuario)
         {
             UsuarioDTO rReturn = new UsuarioDTO();
-
+            
             rReturn.ID = pUsuario.ID;
             rReturn.Nombre = pUsuario.Nombre;
             rReturn.Password = pUsuario.Password;

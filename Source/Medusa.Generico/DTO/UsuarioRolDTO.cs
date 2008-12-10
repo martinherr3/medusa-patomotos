@@ -28,13 +28,15 @@ namespace Medusa.Generico.DTO
             public System.Int64 IdUsuario
             {
                 get { return _IdUsuario; }
-                protected set { _IdUsuario = value; }
+                //protected set { _IdUsuario = value; }
+                set { _IdUsuario = value; }
             }
 
             public System.Int64 IdRol
             {
                 get { return _IdRol; }
-                protected set { _IdRol = value; }
+                //protected set { _IdRol = value; }
+                set { _IdRol = value; }
             }
 
 
