@@ -142,7 +142,7 @@ namespace Medusa.Generico.DTO
         /// Llena una lista de Usuarios.
         /// </summary>
         /// <param name="pEntidad">Criterio de filtro.</param>
-        public List<UsuarioDTO> Llenar()
+        public List<UsuarioDTO> GetAll()
         {
 
             ResponseService<List<UsuarioDTO>> wResul = new Wrapper().ExecuteService<UsuarioDTO, ResponseService<List<UsuarioDTO>>>("BDUsuarioSearchService", this);
@@ -153,6 +153,31 @@ namespace Medusa.Generico.DTO
             else
             {
                 return wResul.ServiceData;
+            }
+        }
+
+        /// <summary>
+        /// Devuelve una entidad segun el ID.
+        /// </summary>
+        /// <param name="pEntidad">Criterio de filtro.</param>
+        public void GetById()
+        {
+
+            ResponseService<UsuarioDTO> wResul = new Wrapper().ExecuteService<long, ResponseService<UsuarioDTO>>("BDUsuarioSearchByIdService", this.ID);
+            if (wResul.ServiceError.HasError)
+            {
+                throw new Exception(wResul.ServiceError.Mensaje);
+            }
+            else
+            {
+                this.ID = wResul.ServiceData.ID;
+                this.Nombre = wResul.ServiceData.Nombre;
+                this.Password = wResul.ServiceData.Password;
+                this.Activo = wResul.ServiceData.Activo;
+                this.CantidadDias = wResul.ServiceData.CantidadDias;
+                this.ForzarExpiracion = wResul.ServiceData.ForzarExpiracion;
+                this.ProximaFechaExpiracion = wResul.ServiceData.ProximaFechaExpiracion;
+                this.Rols = wResul.ServiceData.Rols;
             }
         }
     }
