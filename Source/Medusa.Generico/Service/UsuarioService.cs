@@ -96,51 +96,10 @@ namespace Medusa.Generico.Service
     }
 
 
-    ///// <summary>
-    ///// Servicio para consultar Usuario por atributos de la misma
-    ///// </summary>
-    //class UsuarioGetByEntityService : IBusinessService<UsuarioDTO, ResponseService<List<Usuario>>>
-    //{
-    //    /// <summary>
-    //    /// Exposes accessor for the <see cref="IDaoFactory" /> used by all pages.
-    //    /// </summary>
-    //    public IDaoFactory DaoFactory
-    //    {
-    //        get
-    //        {
-    //            return (IDaoFactory)ContainerHelper.WindsorContainer()[typeof(IDaoFactory)];
-    //        }
-    //    }
-
-    //    #region IBusinessService<UsuarioDTO,ResponseService<List<Usuario>>> Members
-    //    public ResponseService<List<UsuarioDTO>> Execute(UsuarioDTO pServiceRequest)
-    //    {
-    //        ResponseService<List<UsuarioDTO>> wRes = new ResponseService<List<UsuarioDTO>>();
-    //        try
-    //        {
-    //            UsuarioBusiness _UsuarioBusiness;
-    //            _UsuarioBusiness = new UsuarioBusiness(DaoFactory.GetUsuarioDao());
-    //            Usuario myUsuario;
-    //            myUsuario = AssemblerUsuario.DTOToEntity(pServiceRequest);
-    //            _UsuarioBusiness.GetAll();
-    //            wRes.ServiceData = 1;
-    //        }
-    //        catch (Exception ex)
-    //        {
-    //            wRes.ServiceError = new ServiceError(ex.Message, ex.Source, ex.StackTrace);
-    //        }
-    //        return wRes;
-
-
-    //    }
-    //    #endregion
-    //}
-
-
     /// <summary>
     /// Servicio para consultar Usuario por su ID
     /// </summary>
-    class UsuarioGetByIdService : IBusinessService<Int32, ResponseService<List<UsuarioDTO>>>
+    class UsuarioGetByIdService : IBusinessService<Int32, ResponseService<UsuarioDTO>>
     {
         /// <summary>
         /// Exposes accessor for the <see cref="IDaoFactory" /> used by all pages.
@@ -153,18 +112,19 @@ namespace Medusa.Generico.Service
             }
         }
 
-        #region IBusinessService<Int32,ResponseService<List<UsuarioDTO>>> Members
-        public ResponseService<List<UsuarioDTO>> Execute(Int32 pServiceRequest)
+        #region IBusinessService<Int32,ResponseService<UsuarioDTO>> Members
+        public ResponseService<UsuarioDTO> Execute(Int32 pServiceRequest)
         {
-            ResponseService<List<UsuarioDTO>> wRes = new ResponseService<List<UsuarioDTO>>();
+            ResponseService<UsuarioDTO> wRes = new ResponseService<UsuarioDTO>();
             try
             {
                 UsuarioBusiness _UsuarioBusiness;
                 _UsuarioBusiness = new UsuarioBusiness(DaoFactory.GetUsuarioDao());
-                Usuario myUsuario;
-                myUsuario = AssemblerUsuario.DTOToEntity(pServiceRequest);
-                _UsuarioBusiness.GetById(myUsuario.ID);
-                wRes.ServiceData = 1;
+                UsuarioDTO _UsuarioReturn;
+
+                _UsuarioReturn = AssemblerUsuario.EntityToDTO(_UsuarioBusiness.GetById(pServiceRequest));
+
+                wRes.ServiceData = _UsuarioReturn;
             }
             catch (Exception ex)
             {
@@ -178,89 +138,91 @@ namespace Medusa.Generico.Service
     }
 
 
-    ///// <summary>
-    ///// Servicio para consultar Usuario por su ID
-    ///// </summary>
-    //class UsuarioGetAll : IBusinessService<Int32, ResponseService<List<Usuario>>>
-    //{
-    //    /// <summary>
-    //    /// Exposes accessor for the <see cref="IDaoFactory" /> used by all pages.
-    //    /// </summary>
-    //    public IDaoFactory DaoFactory
-    //    {
-    //        get
-    //        {
-    //            return (IDaoFactory)ContainerHelper.WindsorContainer()[typeof(IDaoFactory)];
-    //        }
-    //    }
+    /// <summary>
+    /// Servicio para traer todos los usuarios
+    /// </summary>
+    class UsuarioGetAll : IBusinessService<UsuarioDTO, ResponseService<List<UsuarioDTO>>>
+    {
+        /// <summary>
+        /// Exposes accessor for the <see cref="IDaoFactory" /> used by all pages.
+        /// </summary>
+        public IDaoFactory DaoFactory
+        {
+            get
+            {
+                return (IDaoFactory)ContainerHelper.WindsorContainer()[typeof(IDaoFactory)];
+            }
+        }
 
-    //    #region IBusinessService<Int32,ResponseService<List<Usuario>>> Members
-    //    public ResponseService<List<Usuario>> Execute(Int32 pServiceRequest)
-    //    {
-    //        ResponseService<List<Usuario>> wRes = new ResponseService<List<Usuario>>();
-    //        try
-    //        {
-    //            UsuarioBusiness _UsuarioBusiness;
-    //            _UsuarioBusiness = new UsuarioBusiness(DaoFactory.GetUsuarioDao());
-    //            Usuario myUsuario;
-    //            myUsuario = TransformerUsuario.DTOToEntity(pServiceRequest);
-    //            _UsuarioBusiness.Delete(myUsuario);
-    //            wRes.ServiceData = 1;
-    //            //wRes.ServiceData = UsuarioBC.GetAll();
-    //        }
-    //        catch (Exception ex)
-    //        {
-    //            wRes.ServiceError = new ServiceError(ex.Message, ex.Source, ex.StackTrace);
-    //        }
-    //        return wRes;
+        #region IBusinessService<UsuarioDTO,ResponseService<List<UsuarioDTO>>> Members
+        public ResponseService<List<UsuarioDTO>> Execute(UsuarioDTO pServiceRequest)
+        {
+            ResponseService<List<UsuarioDTO>> wRes = new ResponseService<List<UsuarioDTO>>();
+            try
+            {
+                UsuarioBusiness _UsuarioBusiness;
+                _UsuarioBusiness = new UsuarioBusiness(DaoFactory.GetUsuarioDao());
+                List<Usuario> _Usuarios = _UsuarioBusiness.GetAll();
+                List<UsuarioDTO> _UsuariosReturn = new List<UsuarioDTO>();
+                foreach (Usuario item in _Usuarios)
+                {
+                    _UsuariosReturn.Add(AssemblerUsuario.EntityToDTO(item));
+                }
 
-
-    //    }
-    //    #endregion
-    //}
+                wRes.ServiceData = _UsuariosReturn;
+            }
+            catch (Exception ex)
+            {
+                wRes.ServiceError = new ServiceError(ex.Message, ex.Source, ex.StackTrace);
+            }
+            return wRes;
 
 
-    ///// <summary>
-    ///// Servicio para modificar Usuario
-    ///// </summary>
-    //class UsuarioUpdateService : IBusinessService<Usuario, ResponseService<Int32>>
-    //{
-    //    /// <summary>
-    //    /// Exposes accessor for the <see cref="IDaoFactory" /> used by all pages.
-    //    /// </summary>
-    //    public IDaoFactory DaoFactory
-    //    {
-    //        get
-    //        {
-    //            return (IDaoFactory)ContainerHelper.WindsorContainer()[typeof(IDaoFactory)];
-    //        }
-    //    }
+        }
+        #endregion
+    }
 
-    //    #region IBusinessService<Usuario,ResponseService<Int32>> Members
 
-    //    public ResponseService<Int32> Execute(Usuario pServiceRequest)
-    //    {
-    //        ResponseService<Int32> wRes = new ResponseService<Int32>();
-    //        try
-    //        {
-    //            UsuarioBusiness _UsuarioBusiness;
-    //            _UsuarioBusiness = new UsuarioBusiness(DaoFactory.GetUsuarioDao());
-    //            Usuario myUsuario;
-    //            myUsuario = TransformerUsuario.DTOToEntity(pServiceRequest);
-    //            _UsuarioBusiness.Delete(myUsuario);
-    //            wRes.ServiceData = 1;
-    //            //wRes.ServiceData = UsuarioBC.Update(pServiceRequest);
-    //        }
-    //        catch (Exception ex)
-    //        {
-    //            wRes.ServiceError = new ServiceError(ex.Message, ex.Source, ex.StackTrace);
-    //        }
-    //        return wRes;
+    /// <summary>
+    /// Servicio para modificar Usuario
+    /// </summary>
+    class UsuarioUpdateService : IBusinessService<UsuarioDTO, ResponseService<Int32>>
+    {
+        /// <summary>
+        /// Exposes accessor for the <see cref="IDaoFactory" /> used by all pages.
+        /// </summary>
+        public IDaoFactory DaoFactory
+        {
+            get
+            {
+                return (IDaoFactory)ContainerHelper.WindsorContainer()[typeof(IDaoFactory)];
+            }
+        }
 
-    //    }
+        #region IBusinessService<UsuarioDTO,ResponseService<Int32>> Members
 
-    //    #endregion
-    //}
+        public ResponseService<Int32> Execute(UsuarioDTO pServiceRequest)
+        {
+            ResponseService<Int32> wRes = new ResponseService<Int32>();
+            try
+            {
+                UsuarioBusiness _UsuarioBusiness;
+                _UsuarioBusiness = new UsuarioBusiness(DaoFactory.GetUsuarioDao());
+                Usuario myUsuario;
+                myUsuario = AssemblerUsuario.DTOToEntity(pServiceRequest);
+                _UsuarioBusiness.Update(myUsuario);
+                wRes.ServiceData = 1;
+            }
+            catch (Exception ex)
+            {
+                wRes.ServiceError = new ServiceError(ex.Message, ex.Source, ex.StackTrace);
+            }
+            return wRes;
+
+        }
+
+        #endregion
+    }
 
 
 }
